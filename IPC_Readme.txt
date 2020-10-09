@@ -147,4 +147,18 @@ ii)If receiver attempts to recive a message, before a sender has requested
 Note : If a process receives one of these signals without first arranging to catch it,
        the process will be terminated immediately, a core dump file is created. 
 
+4.SHARED MEMORY
+->Two or more process create "shared memory virtual segments"
+->Each virtual segments maintain their own "shared cirtual pages"
+->These virtual pages of shared segments map their process table entirs(ptes)
+  to the same set of "page-frames"
+->So, if any virtual page of any shared segment is accessed, in any process,
+  they map/point to the same page frames, shared data is accessed concurrently
+->Accessing these shared memory regions does not require any system call APIs.
+->There is no need to copy data between user-space and system -space.
+->So, such shared memory regions are more efficient for data-exchange between 
+  process than typical IPC mechanism like message queue.
+->Setting up a shared memory region, we need to use certain system call APIs
+ 
+
 
